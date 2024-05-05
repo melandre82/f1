@@ -1,0 +1,15 @@
+{
+  "name": "assignment-wt2",
+  "version": "1.0.0",
+  "description": "Replace this with the name of your project. It should be a brief and catchy title that accurately represents your application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^3.0.0"
+  }
+}
