@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "connection": "node src/scripts/test-connection.js",
-    "populate": "node src/populate_tables_temp.js",
+    "populate": "node src/scripts/populate-db.js",
     "start": "node src/server.js",
     "devStart": "nodemon --inspect --max-old-space-size=4096 -r dotenv/config src/server.js",
     "lint": "npx eslint ./src || exit 0",

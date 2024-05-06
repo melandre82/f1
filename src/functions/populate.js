@@ -1,6 +1,6 @@
 import { createReadStream } from 'fs'
 import { parse } from 'csv-parse'
-import { closePool, getNewConnection } from '../src/config/mysql.js'
+import { closePool, getNewConnection } from '../config/mysql.js'
 
 // reused code from previous assignments
 
@@ -18,7 +18,20 @@ async function insertData (tableName, columns, data, batchSize = 500) {
   try {
     conn = await getNewConnection()
     for (let i = 0; i < data.length; i += batchSize) {
-      const batchData = data.slice(i, i + batchSize).map(row => columns.map(col => row[col]))
+      /// no modification
+      // const batchData = data.slice(i, i + batchSize).map(row => columns.map(col => row[col]))
+      /// remove \n and replace with null
+      const batchData = data.slice(i, i + batchSize).map(row =>
+        columns.map(col => {
+          let cellData = row[col]
+          if (typeof cellData === 'string') {
+            cellData = cellData.replace(/\\N/g, '')
+
+            if (cellData === '') cellData = null
+          }
+          return cellData
+        }))
+
       const query = `INSERT INTO ${tableName} (${columns.join(',')}) VALUES ?`
       await conn.query(query, [batchData])
     }

@@ -12,15 +12,15 @@ import { createServer } from 'node:http'
 import dotenv from 'dotenv'
 import express from 'express'
 import logger from 'morgan'
-import { connectDB } from './config/mongoose.js'
+// import { connectDB } from './config/mongoose.js'
 
-import ApiError from '../errors/api-error.js'
+import ApiError from '../src/errors/api-error.js'
 
 try {
   dotenv.config()
 
   // Connect to MongoDB.
-  await connectDB()
+  //   await connectDB()
 
   // Creates an Express application.
   const app = express()
