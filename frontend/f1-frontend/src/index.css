@@ -4,11 +4,18 @@
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
   width: 200px;
   padding: 20px;
   background-color: #f0f0f0;
+  height: 70vh;
+}
+
+.driver-list {
   overflow-y: auto;
-  max-height: 70vh;
+  flex-grow: 1;
+  margin-bottom: 10px;
 }
 
 .chart-container {
@@ -29,7 +36,33 @@
   margin-right: 10px;
 }
 
-canvas {
+.search-field {
   width: 100%;
-  height: auto;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: none;
+  margin-bottom: -18px;
+}
+
+.buttons button {
+  font-size: 14px;
+  flex-grow: 1;
+  margin: 1px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  background-color: #0056b3;
 }
