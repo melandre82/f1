@@ -13,6 +13,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import logger from 'morgan'
 // import { connectDB } from './config/mongoose.js'
+import cors from 'cors'
 
 import ApiError from '../src/errors/api-error.js'
 
@@ -48,7 +49,11 @@ try {
   // Populates the request object with a body object (req.body).
   //
   app.use(express.json())
-  // --------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+
+  app.use(cors({
+    origin: process.env.CLIENT_URL // restrict calls to those origins
+  }))
 
   // Serve static files.
   app.use(express.static(join(directoryFullName, '..', 'public')))
