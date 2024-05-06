@@ -6,16 +6,17 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  width: 200px;
-  padding: 20px;
+  width: 15vw;
   background-color: #f0f0f0;
   height: 70vh;
+  font: 14px Arial, sans-serif;
+  font-weight: bold;
+
 }
 
 .driver-list {
   overflow-y: auto;
   flex-grow: 1;
-  margin-bottom: 10px;
 }
 
 .chart-container {
@@ -38,18 +39,18 @@
 
 .search-field {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 5px solid #898989;
+  border-radius: 4px;
+  margin-bottom: 1px;
 }
-
 .buttons {
   display: flex;
   justify-content: space-around;
   width: 100%;
   margin: none;
-  margin-bottom: -18px;
+  margin-bottom: -10px;
 }
 
 .buttons button {
@@ -66,3 +67,4 @@
 .buttons button:hover {
   background-color: #0056b3;
 }
+

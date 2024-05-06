@@ -3,9 +3,6 @@ import React, { useState, useEffect } from 'react'
 // eslint-disable-next-line no-unused-vars
 import { Line } from 'react-chartjs-2'
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js'
-import dotenv from 'dotenv'
-
-dotenv.config()
 
 ChartJS.register(
   CategoryScale,
@@ -100,9 +97,17 @@ const DriverDataComponent = () => {
   //    *
   //    * @param e
   //    */
-  //   const handleSearchChange = (e) => {
-  //     setFilter(e.target.value.toLowerCase())
-  //   }
+  /**
+   *
+   * @param e
+   */
+  const handleSearchChange = (e) => {
+    setFilter(e.target.value.toLowerCase())
+  }
+
+  const filteredDatasets = chartData.datasets.filter(dataset =>
+    dataset.label.toLowerCase().includes(filter)
+  )
 
   //   const filteredDatasets = chartData.datasets.filter(dataset =>
   //     dataset.label.toLowerCase().includes(filter)
@@ -117,8 +122,8 @@ const DriverDataComponent = () => {
     //   const response = await fetch(`${import.meta.env.VITE_API_URL}/driver-performance`)
     // For some reason, neither REACT_APP_API_URL nor VITE_API_URL wants to work so I had to hardcode the URL
       const response = await fetch('http://localhost:3001/driver-performance')
-      const apiUrl = import.meta.env.REACT_APP_API_URL
-      console.log('API URL:', apiUrl)
+      // const apiUrl = import.meta.env.REACT_APP_API_URL
+      // console.log('API URL:', apiUrl)
 
       const data = await response.json()
       processChartData(data)
@@ -208,9 +213,16 @@ const DriverDataComponent = () => {
 
   return (
     <div className="container">
-    <div className="sidebar">
+        <div className="sidebar">
+      <input
+        type="text"
+        placeholder="Search Drivers"
+        value={filter}
+        onChange={handleSearchChange}
+        className="search-field"
+      />
       <div className="driver-list">
-        {chartData.datasets.map((dataset, index) => (
+        {filteredDatasets.map((dataset, index) => (
           <div key={index} className="legend-item" style={{ color: dataset.borderColor, cursor: 'pointer' }} onClick={() => toggleDriverChecked(dataset.label)}>
             <input
               type="checkbox"
@@ -229,8 +241,9 @@ const DriverDataComponent = () => {
       </div>
     </div>
     <div className="chart-container">
-      <Line options={chartOptions} data={{ datasets: chartData.datasets.filter(dataset => checkedDrivers[dataset.label]) }} />
-    </div>
+  <Line options={chartOptions} data={{ datasets: chartData.datasets.filter(dataset => checkedDrivers[dataset.label]) }} />
+</div>
+
   </div>
   )
 }

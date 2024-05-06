@@ -14,21 +14,21 @@ import express from 'express'
 import logger from 'morgan'
 // import { connectDB } from './config/mongoose.js'
 import cors from 'cors'
+import helmet from 'helmet'
 
 import ApiError from '../src/errors/api-error.js'
 
 try {
   dotenv.config()
 
-  // Connect to MongoDB.
-  //   await connectDB()
-
   // Creates an Express application.
   const app = express()
 
   app.use(express.json({ limit: '1000kb' }))
 
-  // Create an HTTP server and pass it to Socket.IO.
+  app.use(helmet())
+
+  // Create an HTTP server
   const httpServer = createServer(app)
 
   // Get the directory name of this module's path.

@@ -6,10 +6,12 @@ import ApiError from '../errors/api-error.js'
  */
 class DriverController {
   /**
+   * Returns all drivers.
    *
-   * @param req
-   * @param res
-   * @param next
+   * @param {object} req The incoming request.
+   * @param {object} res The outgoing response.
+   * @param {object} next The next middleware in the chain.
+   * @returns {Promise<void>}
    */
   async getDriverPerformance (req, res, next) {
     const pool = await getNewConnection()
