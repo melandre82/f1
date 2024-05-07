@@ -1,5 +1,5 @@
 import populateTableFromCSV from '../functions/populate.js'
-import { closePool } from '../config/mysql.js'
+// import { closePool } from '../config/mysql.js'
 
 // reused code from previous assignments
 
