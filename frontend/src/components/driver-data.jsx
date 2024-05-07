@@ -24,13 +24,13 @@ const DriverDataComponent = () => {
     datasets: []
   })
 
-  const [chartOptions, setChartOptions] = useState({
+  const [chartOptions] = useState({
     responsive: true,
     scales: {
       x: {
         type: 'linear',
         position: 'bottom',
-        min: 1950,
+        min: 1950, // remove hardcoding
         max: 2023,
         ticks: {
           stepSize: 10,
@@ -94,13 +94,10 @@ const DriverDataComponent = () => {
   const [checkedDrivers, setCheckedDrivers] = useState({})
   const [filter, setFilter] = useState('')
 
-  //   /**
-  //    *
-  //    * @param e
-  //    */
   /**
+   * Handle the search change event.
    *
-   * @param e
+   * @param {object} e - The event object.
    */
   const handleSearchChange = (e) => {
     setFilter(e.target.value.toLowerCase())
