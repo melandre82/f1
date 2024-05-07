@@ -23,6 +23,7 @@ const DriverDataComponent = () => {
   const [chartData, setChartData] = useState({
     datasets: []
   })
+
   const [chartOptions, setChartOptions] = useState({
     responsive: true,
     scales: {
@@ -108,10 +109,6 @@ const DriverDataComponent = () => {
   const filteredDatasets = chartData.datasets.filter(dataset =>
     dataset.label.toLowerCase().includes(filter)
   )
-
-  //   const filteredDatasets = chartData.datasets.filter(dataset =>
-  //     dataset.label.toLowerCase().includes(filter)
-  //   )
 
   useEffect(() => {
     /**
@@ -213,38 +210,39 @@ const DriverDataComponent = () => {
 
   return (
     <div className="container">
+      <div className="sidebar-container">
+        <input
+          type="text"
+          placeholder="Search Drivers"
+          value={filter}
+          onChange={handleSearchChange}
+          className="search-field"
+        />
         <div className="sidebar">
-      <input
-        type="text"
-        placeholder="Search Drivers"
-        value={filter}
-        onChange={handleSearchChange}
-        className="search-field"
-      />
-      <div className="driver-list">
-        {filteredDatasets.map((dataset, index) => (
-          <div key={index} className="legend-item" style={{ color: dataset.borderColor, cursor: 'pointer' }} onClick={() => toggleDriverChecked(dataset.label)}>
-            <input
-              type="checkbox"
-              checked={checkedDrivers[dataset.label]}
-              onChange={() => toggleDriverChecked(dataset.label)}
-              onClick={(e) => e.stopPropagation()}
-            />
-            <span className="color-box" style={{ backgroundColor: dataset.borderColor }}></span>
-            {dataset.label}
+          <div className="driver-list">
+            {filteredDatasets.map((dataset, index) => (
+              <div key={index} className="legend-item" style={{ color: dataset.borderColor, cursor: 'pointer' }} onClick={() => toggleDriverChecked(dataset.label)}>
+                <input
+                  type="checkbox"
+                  checked={checkedDrivers[dataset.label]}
+                  onChange={() => toggleDriverChecked(dataset.label)}
+                  onClick={(e) => e.stopPropagation()}
+                />
+                <span className="color-box" style={{ backgroundColor: dataset.borderColor }}></span>
+                {dataset.label}
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+        <div className="buttons">
+          <button onClick={() => handleCheckUncheckAll(true)}>Check All</button>
+          <button onClick={() => handleCheckUncheckAll(false)}>Uncheck All</button>
+        </div>
       </div>
-      <div className="buttons">
-        <button onClick={() => handleCheckUncheckAll(true)}>Check All</button>
-        <button onClick={() => handleCheckUncheckAll(false)}>Uncheck All</button>
+      <div className="chart-container">
+        <Line options={chartOptions} data={{ datasets: chartData.datasets.filter(dataset => checkedDrivers[dataset.label]) }} />
       </div>
     </div>
-    <div className="chart-container">
-  <Line options={chartOptions} data={{ datasets: chartData.datasets.filter(dataset => checkedDrivers[dataset.label]) }} />
-</div>
-
-  </div>
   )
 }
 
