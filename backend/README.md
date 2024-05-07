@@ -1,29 +1,32 @@
-# Project Title
-
-Replace this with the name of your project. It should be a brief and catchy title that accurately represents your application.
+# F1 Data
 
 ## Project Description
 
-Write a brief description of your application here. The description should provide an overview of the application features, its purpose, and how it achieves the objective of the assignment. Discuss the dataset used and why it was chosen.
+F1 Data is a web app for visualizing the performance of Formula 1 drivers across the seasons. Users can view the total points drivers accummulated in each year, compare different drivers, and analyze trends in their racing careers. 
 
-Describe the insights you are providing through your interactive visualization. Highlight the questions this project is intended to answer or the insights you aim to provide.
+A technicality perhaps worth pointing out is that the points system has been inflated over the years so comparing drivers from different time periods is largely meaningless. Ideally I'd provide an option for a standardized points system. The source data also cuts off in the middle of the '23 season. Anyway, that's not really relevant to the assignment.
 
 ## Core Technologies
 
-Include a list of the main technologies used in your project. Explain why you decided to use these technologies and what benefits they have provided in accomplishing your goals. This can include the backend framework, data analysis and processing tools, data visualization library, frontend technology, and deployment platform.
+React.js: Chosen for the frontend to manage the application’s state and render the UI dynamically based on user interactions.
+
+Node.js and Express: Used for the backend to handle API requests and serve data to the frontend.
+
+Chart.js: Used on the front end for its charting capabilities. I was impressed how well it works with little setup.
+
+MySQL: Utilized for database management to handle the large datasets. I like its reliability and ease of use.
 
 ## How to Use
 
-This section should contain instructions for how to use your application. Explain the controls used in your visualization and how to interact with it to uncover different insights. Providing screenshots and/or gifs can greatly help users understand how to use your application.
+1. Searching for Drivers: Enter a driver's name in the search bar and check their name too see their points history.
+2. Comparing Drivers: Check multiple drivers from the side bar to compare their points accumulation graphically over the years. You can also select / deselect all at once.
+4. More data: Hover over a graph plot to see the driver's name, year and total points. 
 
 ## Link to the Deployed Application
 
-Include a link to the deployed application. The application should be hosted on a platform that allows public access.
+[https://cscloud7-245.lnu.se/wt2-web/](https://cscloud7-245.lnu.se/wt2-web/)
 
-## Additional features
-
-Explain how you have addressed the assignment requirements. If you've added any custom functionality, discuss them in this section and link to the specific issues you have closed.
 
 ## Acknowledgements
 
-Include a list of resources you found helpful, attributions, or shoutouts here.
+[Source data](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020)
