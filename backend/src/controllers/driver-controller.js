@@ -29,11 +29,11 @@ class DriverController {
     `)
       console.log('query executed')
       if (results.length === 0) {
-        return next(new ApiError(404, 'No data'))
+        return next(new ApiError(404))
       }
       res.json(results)
     } catch (error) {
-      res.status(500).json({ message: error.message })
+      return next(new ApiError(500))
     } finally {
       await pool.release()
     }
