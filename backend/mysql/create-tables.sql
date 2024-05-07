@@ -3,8 +3,8 @@ use formula1;
 CREATE TABLE drivers (
     driverId INT PRIMARY KEY,
     driverRef VARCHAR(255) NOT NULL,
-    number VARCHAR(255) NOT NULL,
-    code VARCHAR(10) NOT NULL,
+    number VARCHAR(255),
+    code VARCHAR(10),
     forename VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL,
     dob DATE NOT NULL,
